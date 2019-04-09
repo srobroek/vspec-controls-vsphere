@@ -1,0 +1,49 @@
+hosts:
+  - name: psc-hostname.tld
+
+    auth:
+      vamiuser: root
+      vamipass: somethingsecretsomethingsafe
+    config:
+      ssodomain: your.sso.domain
+      version: "6.7.0.21000"
+      vamiport: 5480
+      deploymenttype: "VCSA_EMBEDDED"
+      time:
+        timesync: "NTP"
+        timezone: "ETC/UTC"
+        timentp:
+          ntpservers:
+          - fr.pool.ntp.org
+          - pool.ntp.org
+      dns:
+        mode: "STATIC"
+        servers:
+          - "172.20.11.10"
+          - "172.20.11.11"
+    access:
+      ssh: true
+      dcui: true
+      consolecli: true
+      shell: false
+
+  - name: another.psc-hostname.tld
+    auth:
+      vamiuser: root
+      vamipass: somethingsecretsomethingsafe
+    config:
+      ssodomain: your.second.sso.domain
+      version: "6.7.0.21000"
+      vamiport: 5480
+      deploymenttype: "VCSA_EMBEDDED"
+      time:
+        timesync: "NTP"
+        timezone: "ETC/UTC"
+        ntpservers:
+          - fr.pool.ntp.org
+          - pool.ntp.org
+    access:
+      ssh: true
+      dcui: true
+      consolecli: true
+      shell: false
