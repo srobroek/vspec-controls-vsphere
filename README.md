@@ -9,7 +9,7 @@ vSpec is a set of inspec profiles specifically aimed at vsphere and VMware relat
 
 # Notes
 
-The only OS this has been tested and found working on is Linux. It probably also works on OSX. Windows is right out because inspec doesn't support http on windows. If you want to run this on windows, it works if you have the linux subsystem and install inspec under the linux subsystem. 
+The only OS this has been tested and found working on is Linux and the Linux subsystem for windows. It probably also works on OSX. Windows native is out because inspec doesn't support http on windows. If you want to run this on windows, install it as if you were installing it on linux using the linux subsystem. 
 
 # Warning
 
