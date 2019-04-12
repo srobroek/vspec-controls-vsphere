@@ -3,9 +3,12 @@ vSpec is a set of inspec profiles specifically aimed at vsphere and VMware relat
 
 # how to run
 - Install inspec (https://inspec.io)
-- clone this repo
-- create a config file in each of the profiles (samples are provided)
-- run `inspec --exec psc --attrs path/to/your/config`
+
+????
+
+- Profit!
+
+- I'll update this once the code has stabilised a bit. 
 
 # Notes
 
