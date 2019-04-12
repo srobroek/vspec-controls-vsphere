@@ -7,9 +7,10 @@ license: Apache-2.0
 summary: Profiles to check for various vsphere compliance issues
 version: 0.1.0
 supports:
-  platform: vsphere
+  platform-name: vsphere
+  platform-family: cloud
 
 depends:
-  name: inspec-vsphere
-  git: https://github.com/srobroek/inspec-vsphere
-  branch: master
+- name: vspec-resource-vsphere
+  git: https://github.com/srobroek/vspec-resources-vsphere.git
+  branch: develop

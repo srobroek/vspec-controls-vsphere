@@ -44,3 +44,5 @@ contrib/*
 inspec.lock
 **/attributes/*.yml
 !**/attributes/sample-config-*.yml
+vendor
+
