@@ -14,3 +14,7 @@ depends:
 - name: vspec-resource-vsphere
   git: https://github.com/srobroek/vspec-resources-vsphere.git
   branch: master
+
+attributes:
+  - name: config
+    required: true

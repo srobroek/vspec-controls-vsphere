@@ -3,6 +3,7 @@
 
 title 'VCSA appliance checks'
 
+config = attribute('config')
 # you can also use plain tests
 
 
@@ -28,10 +29,10 @@ control 'VCSA-002-01' do                        # A unique ID for this control
 
   describe "Service status of" do
     subject {vcsa}
-    its('ssh') { should eq false }
-    its('consolecli') { should eq true}
-    its('dcui') { should eq true}
-    its('shell') {should eq false}
+    its('ssh') { should eq config['access']['ssh'] }
+    its('consolecli') { should eq config['access']['consolecli']}
+    its('dcui') { should eq config['access']['dcui']}
+    its('shell') {should eq config['access']['shell']}
   end
 end
 
@@ -71,8 +72,8 @@ control 'VCSA-002-03' do                        # A unique ID for this control
 
 
   describe vcsa do
-    its('psc_address') { should eq 'vcsa-01.lab.vxsan.com'}
-    its('sso_domain') { should eq 'LAB.VXSAN.COM'}
+    its('psc_address') { should eq config['sso']['psc_address']}
+    its('sso_domain') { should eq config['sso']['ssodomain']}
   end
 end
 
@@ -88,9 +89,9 @@ control 'VCSA-003-01' do                        # A unique ID for this control
 
 
   describe vcsa do
-    its('version') { should eq '6.7.0.21000'}
-    its('build') { should eq '11726888'}
-    its('auto_update') { should eq false}
+    its('version') { should eq config['software']['version']}
+    its('build') { should eq config['software']['build']}
+    its('auto_update') { should eq config['software']['autoupdate']}
   end
 end
 
@@ -116,9 +117,8 @@ control 'VCSA-006-01' do                        # A unique ID for this control
 
 
   describe vcsa do
-    its('identity_sources') { should include 'VXSAN'}
-    its('identity_sources') { should_not include 'LAB.VXSAN.COM'}
-    its('identity_sources') { should eq ["LAB.VXSAN.COM", "VXSAN"] }
+
+    its('identity_sources') { should eq config['auth']['identity_sources'] }
   end
 end
 
@@ -131,7 +131,7 @@ control 'VCSA-007-01' do                        # A unique ID for this control
   describe sslcertificate do
     it { should exist}
     it { should be_trusted }
-    its('issuer') { should eq "/CN=CA/DC=LAB/DC=VXSAN.COM/C=US/ST=California/O=vcsa-01.lab.vxsan.com/OU=VMware Engineering"}
+    its('issuer') { should eq config['certificate']['issuer']}
     its('subject') { should eq "/CN=vcsa-01.lab.vxsan.com/C=US"}
     its('expiration_days') { should be > 365 }
     its('key_size') { should eq 2048}

@@ -1,0 +1,32 @@
+config:
+  sso:
+    psc_address: 'vcsa-01.lab.vxsan.com'
+    ssodomain: 'lab.vxsan.com'
+  software:
+    version: "6.7.0.21000"
+    deploymenttype: "VCSA_EMBEDDED"
+    build: '11726888'
+    autoupdate: false
+  auth:
+    identity_sources:
+      - 'LAB.VXSAN.COM'
+      - 'VXSAN'
+  certificate:
+    issuer: '/CN=CA/DC=LAB/DC=VXSAN.COM/C=US/ST=California/O=vcsa-01.lab.vxsan.com/OU=VMware Engineering'
+  time:
+    timesync: "NTP"
+    timezone: "ETC/UTC"
+    timentp:
+      ntpservers:
+      - fr.pool.ntp.org
+      - pool.ntp.org
+  dns:
+    mode: "STATIC"
+    servers:
+      - "172.20.11.10"
+      - "172.20.11.11"
+  access:
+    ssh: false
+    dcui: true
+    consolecli: true
+    shell: false
