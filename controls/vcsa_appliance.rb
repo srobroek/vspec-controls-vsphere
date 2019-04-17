@@ -11,8 +11,8 @@ control 'VCSA-001-01' do                        # A unique ID for this control
   impact 0.7                                # The criticality, if this control fails.
   title 'Check VCSA authentication'             # A human-readable title
   desc 'Check for authentication against the VCSA appliance'
-  describe "Authenticated against the VCSA VAMI" do
-    subject {vcsa}
+  
+  describe vcsa do
     its('api_authentication') { should eq true }
   end
 end
@@ -99,8 +99,8 @@ control 'VCSA-004-01' do                        # A unique ID for this control
   impact 0.7                                # The criticality, if this control fails.
   title 'Check web authentication'             # A human-readable title
   desc 'Check for authentication against the vsphere web API'
-  describe "Authenticated against the vsphere web API" do
-    subject {vcsa}
+  
+  describe vcsa do
     its('web_authentication') { should eq true }
   end
 end
@@ -127,9 +127,6 @@ control 'VCSA-007-01' do                        # A unique ID for this control
   title 'Check the VCSA certificate configuration'             # A human-readable title
   desc 'Check the VCSA certificate configuration'
 
-    only_if('vsphere did not authenticate succesfully') do
-    vcsa.web_authentication
-  end
 
   describe sslcertificate do
     it { should exist}
