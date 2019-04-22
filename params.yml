@@ -3,9 +3,9 @@ config:
     psc_address: 'vcsa-01.lab.vxsan.com'
     ssodomain: 'lab.vxsan.com'
   software:
-    version: "6.7.0.21000"
+    version: "6.7.1.21000"
     deploymenttype: "VCSA_EMBEDDED"
-    build: '11726888'
+    build: '11726889'
     autoupdate: false
   auth:
     identity_sources:
@@ -26,7 +26,7 @@ config:
       - "172.20.11.10"
       - "172.20.11.11"
   access:
-    ssh: false
+    ssh: true
     dcui: true
     consolecli: true
     shell: false
