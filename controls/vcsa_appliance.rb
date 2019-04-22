@@ -2,7 +2,6 @@
 # copyright: 2019, Sjors
 
 title 'VCSA appliance checks'
-
 config = attribute('config')
 # you can also use plain tests
 
